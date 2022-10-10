@@ -18,5 +18,6 @@ public class JokeController {
         model.addAttribute("joke", jokeService.getJoke());
 
         return "index";
+        // index is the name of the template we are returning to
     }
 }
