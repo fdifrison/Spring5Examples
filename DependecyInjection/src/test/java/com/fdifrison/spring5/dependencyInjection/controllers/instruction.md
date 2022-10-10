@@ -1,0 +1,1 @@
+We are simulating manually dependency injection and already from the test and implementation can be seen that injection by constructor is the best approach
