@@ -11,10 +11,16 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class GreetingServiceConfig {
 
+    @Bean
+    GreetingsServiceFactory greetingsServiceFactory() {
+        return new GreetingsServiceFactory();
+    }
+
     @Profile({"SP", "default"})
-    @Bean("i18nService") // bean name specified here
-    I18nSpanishService i18nSpanishService(){
-        return new I18nSpanishService();
+    @Bean("i18nService")
+        // bean name specified here
+    I18nSpanishService i18nSpanishService(GreetingsServiceFactory greetingsServiceFactory) {
+        return greetingsServiceFactory.getLanguage("SP");
     }
 
     @Bean
@@ -23,8 +29,8 @@ public class GreetingServiceConfig {
     }
 
     @Profile("IT")
-    @Bean
-    I18nItalianService i18nService(ItalianGreetingRepository italianGreetingRepository){ //bean name as method name
+    @Bean("i18nService")
+    I18nItalianService i18nItalianService(ItalianGreetingRepository italianGreetingRepository) { //bean name as method name
         return new I18nItalianService(italianGreetingRepository);
     }
 
