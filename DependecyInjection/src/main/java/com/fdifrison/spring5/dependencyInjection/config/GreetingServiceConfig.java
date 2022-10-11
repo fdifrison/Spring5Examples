@@ -1,5 +1,7 @@
 package com.fdifrison.spring5.dependencyInjection.config;
 
+import com.fdifrison.spring5.dependencyInjection.repositories.ItalianGreetingRepository;
+import com.fdifrison.spring5.dependencyInjection.repositories.ItalianGreetingRepositoryImpl;
 import com.fdifrison.spring5.dependencyInjection.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +17,15 @@ public class GreetingServiceConfig {
         return new I18nSpanishService();
     }
 
+    @Bean
+    ItalianGreetingRepository italianGreetingRepository() {
+        return new ItalianGreetingRepositoryImpl();
+    }
+
     @Profile("IT")
     @Bean
-    I18nItalianService i18nService(){ //bean name as method name
-        return new I18nItalianService();
+    I18nItalianService i18nService(ItalianGreetingRepository italianGreetingRepository){ //bean name as method name
+        return new I18nItalianService(italianGreetingRepository);
     }
 
     @Primary
