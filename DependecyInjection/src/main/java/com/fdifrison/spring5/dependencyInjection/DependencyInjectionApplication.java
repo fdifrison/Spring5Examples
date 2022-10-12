@@ -1,6 +1,7 @@
 package com.fdifrison.spring5.dependencyInjection;
 
 import com.fdifrison.spring5.dependencyInjection.controllers.*;
+import com.fdifrison.spring5.dependencyInjection.datasource.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -34,6 +35,10 @@ public class DependencyInjectionApplication {
 		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
 		i18nController.speakBaseOnProfile();
 
+
+		System.out.println("------- Getting Properties ---------");
+		FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean("fakeDataSource");
+		System.out.println(fakeDataSource);
 	}
 
 }
