@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 public class ConstructorInjectionController {
     private final GreetingService greetingService;
     //Autowire is not needed for constructor injection
+    @Autowired
     public ConstructorInjectionController(@Qualifier("constructorGreetingService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
