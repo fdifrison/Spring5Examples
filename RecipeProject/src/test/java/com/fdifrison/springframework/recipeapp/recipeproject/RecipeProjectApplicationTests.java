@@ -1,4 +1,4 @@
-package com.fdifrison.springframework.recipeproject;
+package com.fdifrison.springframework.recipeapp.recipeproject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
