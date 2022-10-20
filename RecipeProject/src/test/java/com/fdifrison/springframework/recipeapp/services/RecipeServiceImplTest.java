@@ -1,5 +1,7 @@
 package com.fdifrison.springframework.recipeapp.services;
 
+import com.fdifrison.springframework.recipeapp.converters.RecipeCommandToRecipe;
+import com.fdifrison.springframework.recipeapp.converters.RecipeToRecipeCommand;
 import com.fdifrison.springframework.recipeapp.model.Recipe;
 import com.fdifrison.springframework.recipeapp.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,11 +18,15 @@ class RecipeServiceImplTest {
     RecipeServiceImpl recipeService;
     @Mock
     RecipeRepository recipeRepository;
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
 
     @BeforeEach
     void setUp()  throws  Exception {
         MockitoAnnotations.openMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
 
     }
 
